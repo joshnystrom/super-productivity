@@ -224,17 +224,21 @@
                   download-backup></ng-md-icon>
       Import Settings
     </md-button>
+  </section>
 
+  <section>
+    <h2 class="md-title">Misc</h2>
+    <md-input-container class="md-block">
+      <div flex-gt-sm="50">
+        <md-switch ng-model="vm.r.config.isShortSyntaxEnabled"
+                   aria-label="Use short syntax (e.g. 'TaskTitleBla e:30m')">
+          Use short syntax (e.g. 'TaskTitleBla e:30m') for task creation
+        </md-switch>
+      </div>
+    </md-input-container>
 
-    <section>
-      <h2 class="md-title">Misc</h2>
-      <md-input-container class="md-block">
-        <div flex-gt-sm="50">
-          <md-switch ng-model="vm.r.config.isShortSyntaxEnabled"
-                     aria-label="Use short syntax (e.g. 'TaskTitleBla e:30m')">
-            Use short syntax (e.g. 'TaskTitleBla e:30m') for task creation
-          </md-switch>
-        </div>
-      </md-input-container>
-    </section>
+    <div ng-if="vm.IS_ELECTRON">
+      <md-button ui-sref="command-line-hooks">Configure command line hooks</md-button>
+    </div>
+  </section>
 </div>

@@ -42,6 +42,10 @@
         url: '/done-tasks-backlog',
         template: '<done-tasks-backlog></done-tasks-backlog>'
       })
+      .state('command-line-hooks', {
+        url: '/command-line-hooks',
+        template: '<command-line-hooks-config></command-line-hooks-config>'
+      })
     /* STATES-NEEDLE - DO NOT REMOVE THIS */;
   }
 })();

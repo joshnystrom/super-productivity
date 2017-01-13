@@ -29,6 +29,8 @@
   function DailySummaryCtrl($rootScope, $window, $localStorage, Tasks, $mdDialog, $state, GitLog) {
     const IPC_EVENT_SHUTDOWN = 'SHUTDOWN';
 
+    $rootScope.$broadcast('GO_TO_DAILY_SUMMARY');
+
     let vm = this;
 
     vm.r = $rootScope.r;
@@ -64,6 +66,7 @@
 
     vm.finishDay = () => {
       $localStorage.tomorrowsNote = vm.tomorrowsNote;
+      $rootScope.$broadcast('DAY_FINISHED');
 
       Tasks.finishDay(vm.clearDoneTasks, vm.moveUnfinishedToBacklog);
 

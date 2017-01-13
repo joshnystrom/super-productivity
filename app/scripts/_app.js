@@ -46,7 +46,8 @@
         projectDir: undefined
       },
       config: {
-        isShortSyntaxEnabled: true
+        isShortSyntaxEnabled: true,
+        commandLineHooks: undefined
       },
       jiraSettings: {
         isFirstLogin: true,
@@ -135,6 +136,8 @@
     $rootScope.r.jiraSettings = $localStorage.jiraSettings;
 
     $rootScope.r.git = $localStorage.git;
+
+    $rootScope.r.config = $localStorage.config;
 
     $rootScope.r.theme = $localStorage.theme || DEFAULT_THEME;
 

@@ -1,0 +1,31 @@
+<section>
+  <!--<section ng-if="vm.IS_ELECTRON">-->
+  <h2 class="md-title">Command line hooks</h2>
+  <p>Here you can configure commands that should be executed on specific app events. You can also configure data to pass via STDIN.</p>
+  <p>Be careful! You should only do this, if you know what you're doing!</p>
+  <md-divider></md-divider>
+
+  <div ng-repeat="(eventKey, event) in vm.EVENTS">
+    <h3 class="md-title">{{ eventKey }}</h3>
+    <p class="md-body-1">{{ event.description }}</p>
+    <div layout-gt-xs="row">
+      <md-input-container class="md-block"
+                          flex-gt-xs="70">
+        <label>Command</label>
+        <input type="text"
+               ng-model="r.config.commandLineHooks[eventKey].cmd">
+      </md-input-container>
+
+      <md-input-container class="md-block"
+                          flex-gt-xs="30">
+        <label>Data to pass</label>
+        <md-select ng-model="r.config.commandLineHooks[eventKey].taskDataOption"
+                   arial-label="Select data to pass to command">
+          <md-option><em>None</em></md-option>
+          <md-option ng-value="'TODAYS_TASKS'">Tasks for today</md-option>
+          <md-option ng-value="'ALL_DATA'">All data</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  </div>
+</section>
