@@ -1,0 +1,49 @@
+.markdown {
+  @include scrollY;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+
+  *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+    margin-top: 16px;
+  }
+
+  h1 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-x: overlay;
+    // we need this, otherwise it might break inside tables
+    white-space: pre-wrap;
+
+    code {
+      font-size: 12px;
+    }
+  }
+}

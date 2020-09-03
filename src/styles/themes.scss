@@ -1,0 +1,95 @@
+@import '~angular-material-css-vars/public-util';
+@import '~angular-material-css-vars/main';
+
+// INIT THEMING
+@include init-material-css-vars();
+
+
+.bg-card {
+  background: #fff;
+
+  .isDarkTheme & {
+    background: $dark-theme-card-bg;
+  }
+}
+
+.bg-primary {
+  background-color: $c-primary;
+}
+
+.bgc-primary {
+  @include mat-css-color-and-contrast-primary(500);
+}
+
+.bg-accent {
+  background-color: $c-accent;
+}
+
+.bgc-accent {
+  @include mat-css-color-and-contrast-accent(500);
+}
+
+.bg-100 {
+  background-color: $c-primary-100;
+}
+
+.bg-200 {
+  background-color: $c-primary-200;
+}
+
+.bg-400 {
+  background-color: $c-primary-400;
+}
+
+.bgc-400 {
+  @include mat-css-color-and-contrast-primary(400);
+}
+
+.bg-600 {
+  background-color: $c-primary-600;
+}
+
+.bgc-600 {
+  @include mat-css-color-and-contrast-primary(600);
+}
+
+.cc-600 {
+  color: $c-contrast-600;
+}
+
+.bg-600i {
+  background-color: $c-primary-600 !important;
+}
+
+.bgc-800 {
+  @include mat-css-color-and-contrast-primary(800);
+}
+
+// for buttons
+.isDarkTheme .mat-lighter,
+.mat-lighter {
+  @include mat-css-color-and-contrast-primary(300);
+}
+
+.isDarkTheme .mat-darker,
+.mat-darker {
+  @include mat-css-color-and-contrast-primary(600);
+}
+
+.color-contrast {
+  color: $c-contrast;
+}
+
+.color-primary {
+  color: $c-primary;
+  stroke: $c-primary;
+}
+
+.color-warn-i {
+  color: $c-warn !important;
+  stroke: $c-warn !important;
+}
+
+.border-color-primary {
+  border-color: $c-primary !important;
+}

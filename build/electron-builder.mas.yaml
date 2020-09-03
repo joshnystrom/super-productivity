@@ -1,0 +1,24 @@
+appId: com.super-productivity.app
+#afterSign: build/scripts/notarize.js
+files:
+  - electron/**/*
+  - "!electron/**/*.ts"
+  - "!electron/**/*.js.map"
+  - dist/**/*
+  - 'embedded.provisionprofile'
+directories:
+  output: "./app-builds"
+
+mas:
+  appId: com.super-productivity.app
+  category: public.app-category.productivity
+  icon: build/icon.icns
+  gatekeeperAssess: false
+  darkModeSupport: true
+  target:
+    - mas
+
+  hardenedRuntime: false
+  entitlements: build/entitlements.mas.plist
+  entitlementsInherit: build/entitlements.mas.inherit.plist
+  provisioningProfile: embedded.provisionprofile

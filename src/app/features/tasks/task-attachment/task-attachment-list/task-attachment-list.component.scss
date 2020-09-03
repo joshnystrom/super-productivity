@@ -1,0 +1,199 @@
+@import 'src/variables';
+
+$thisHeight: 80px;
+$thisMargin: $s;
+
+$thisUpperHeight: 52px;
+$thisLowerHeight: $thisHeight - $thisUpperHeight;
+
+:host {
+  display: block;
+}
+
+.attachments {
+  list-style-type: none;
+  display: flex;
+  margin: -1*$thisMargin;
+  padding: 0;
+  flex-flow: row;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.attachment {
+  margin: $thisMargin;
+  padding: 0;
+  border-radius: $card-border-radius;
+  position: relative;
+  overflow: hidden;
+
+  @include layerTextAndBgHigher;
+
+  @include lightTheme {
+    background: #fff;
+    border: 1px solid $light-theme-extra-border-color;
+  }
+
+  //.controls,
+  > a:focus + .controls,
+  &.focus .controls,
+  &:hover .controls {
+    visibility: visible;
+
+    button {
+      opacity: 1;
+      transition: $transition-fast;
+    }
+
+    .view-btn,
+    .edit-btn,
+    .trash-btn {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+.attachment-link {
+  padding: $s;
+  height: $thisHeight;
+  min-width: $thisHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: $card-border-radius;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+
+  mat-icon {
+    font-size: $s*5;
+    height: $s*5;
+    width: $s*5;
+  }
+
+  &.isImage {
+    padding: 0;
+    cursor: zoom-in;
+
+    img {
+      height: $thisHeight;
+      width: auto;
+    }
+  }
+
+  .title {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  //transform: translateY(25%);
+  z-index: 5;
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  flex-wrap: wrap;
+  pointer-events: none;
+
+  button {
+    display: block;
+    transition: $transition-fast;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    flex-grow: 1;
+    min-width: 20px;
+    opacity: 0;
+    border-width: 0;
+
+    @include lightTheme() {
+      background: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.5);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.9);
+      }
+    }
+
+    @include darkTheme() {
+      background: rgba(0, 0, 0, 0.4);
+      border-color: rgba(0, 0, 0, 0.5);
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+    }
+  }
+}
+
+.view-btn {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  flex: 1;
+  flex-basis: 100%;
+  width: 100%;
+  min-width: 100%;
+  line-height: $thisUpperHeight;
+  height: $thisUpperHeight;
+
+  @include mq(xs) {
+    transform: translate(0, -50%);
+  }
+}
+
+.edit-btn,
+.trash-btn {
+  margin-top: 2px;
+  line-height: $thisLowerHeight;
+  height: $thisLowerHeight;
+}
+
+.edit-btn {
+  pointer-events: all;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  flex-basis: 50%;
+  width: 50%;
+
+  @include mq(xs) {
+    transform: translate(-100%, 50%);
+  }
+}
+
+.trash-btn {
+  pointer-events: all;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 1px;
+  flex-basis: 50%;
+  width: 50%;
+
+  &:hover {
+    background: $c-warn !important;
+
+    mat-icon {
+      color: #fff !important;
+    }
+  }
+
+  @include mq(xs) {
+    transform: translate(100%, 50%);
+  }
+}

@@ -1,0 +1,79 @@
+@import '../../../../variables';
+
+$vertical-button-margin: $s;
+
+:host {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.content-wrapper {
+  @include dividerBorderColor(1px 0);
+
+  @include lightTheme() {
+    background-color: #fff;
+  }
+  @include darkTheme() {
+    background-color: $dark-theme-bg-lightest;
+  }
+}
+
+.inner-content-wrapper {
+  max-width: $component-max-width;
+  margin: auto;
+  padding: $s*2;
+  padding-top: $s;
+  padding-bottom: $s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include mq(component) {
+    // sync to task list padding
+    padding-left: 3*$s;
+    padding-right: 3*$s;
+  }
+}
+
+.message-wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: $s;
+  padding-bottom: $s;
+
+  mat-icon {
+    margin-right: $s*1.5;
+    min-width: 20px;
+
+    :host-context([dir=rtl]) & {
+      margin-right: 0px;
+      margin-left: $s*1.5;
+    }
+
+    .isError & {
+      color: $c-warn;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+
+  :host-context([dir=rtl]) & {
+    button {
+      font-weight: bolder;
+    }
+  }
+}
+
+.motivational-img-wrapper {
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 30vh;
+    margin: auto auto 8px;
+    object-fit: cover
+  }
+}

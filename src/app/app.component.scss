@@ -1,0 +1,112 @@
+@import '../_variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-wrapper {
+  position: relative;
+  z-index: $z-main-header-wrapper;
+  display: block;
+  transition: $transition-enter;
+  border-bottom: 1px solid transparent;
+
+  @include lightTheme() {
+    border-color: rgba(0, 0, 0, .15);
+  }
+  @include darkTheme() {
+    border-color: rgba(255, 255, 255, .15);
+  }
+
+  &.isNotScrolled {
+    border-color: transparent !important;
+  }
+}
+
+.route-wrapper {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+
+  > ::ng-deep router-outlet + * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    @include scrollY();
+  }
+}
+
+.backdrop {
+  // global styles in backdrop.scss
+}
+
+add-task-bar {
+  z-index: $z-add-task-bar;
+}
+
+main-header {
+  position: relative;
+  z-index: $z-main-header;
+}
+
+bookmark-bar {
+  position: relative;
+  z-index: $z-bookmarks;
+}
+
+
+.additional-info-panel {
+  min-width: 300px;
+  width: 40vw;
+  max-width: 700px;
+  min-height: 100vh;
+
+  .mat-drawer-over & {
+    width: 80vw;
+
+    @include mq(xs, max) {
+      width: 90vw;
+    }
+  }
+}
+
+
+// SIDENAV
+// -------
+:host ::ng-deep .mat-drawer-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-sidenav-container {
+  background: transparent !important;
+}
+
+mat-sidenav,
+mat-sidenav-container {
+  height: 100%;
+}
+
+
+// sidebars
+mat-sidenav ::ng-deep .mat-drawer-inner-container {
+  @include scrollYImportant();
+
+  @include lightTheme() {
+    background: $light-theme-bg-darker;
+  }
+
+  @include darkTheme {
+    background: $dark-theme-sidebar-bg;
+  }
+}
+
+mat-sidenav {
+  z-index: $z-side-nav;
+}
+

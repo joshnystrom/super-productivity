@@ -1,0 +1,113 @@
+@import '../_variables.scss';
+
+html,
+body,
+app-root,
+.app-frame {
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  //font-family: 'Montserrat', 'Roboto', sans-serif;
+  //font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  &.isDisableBackgroundGradient {
+    &:before {
+      display: none !important;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+
+  &.isLightTheme {
+    color: $light-theme-text-color;
+
+    &.isDisableBackgroundGradient {
+      background: $light-theme-bg;
+    }
+
+    &:before {
+      filter: saturate(0.8);
+      background: linear-gradient(180deg, $c-primary-50 0, $c-primary-100 85%, $c-primary-200 100%);
+    }
+  }
+
+
+  &.isDarkTheme {
+    color: $dark-theme-text-color;
+
+    &.isDisableBackgroundGradient {
+      background: $dark-theme-bg;
+    }
+
+    &:before {
+      filter: brightness(0.8) saturate(0.5);
+      background: linear-gradient(180deg, $dark-theme-bg 0, $c-primary-900 20%, $c-primary-800 50%, $c-primary-700 100%);
+    }
+  }
+}
+
+.page-wrapper {
+  padding: $s 2*$s $s*9;
+}
+
+.component-wrapper {
+  max-width: $component-max-width;
+  margin: auto;
+}
+
+.task-list-wrapper {
+  padding: 0 0 $s*9;
+  // for a little bit of extra space for 800 width
+  max-width: #{$component-max-width - 40};
+  margin: auto;
+
+  @include mq(xxs) {
+    padding: 0 $s*1 $s*9;
+  }
+
+  @include mq(xs) {
+    padding: 0 $s*1.5 $s*9;
+  }
+
+  @include mq(sm) {
+    padding: 0 3*$s $s*9;
+    max-width: $component-max-width;
+  }
+
+  improvement-banner + & {
+    padding-top: 0;
+  }
+}
+
+
+a[href] {
+  color: $c-accent;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+// make images responsive per default
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+

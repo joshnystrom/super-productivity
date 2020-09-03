@@ -1,0 +1,45 @@
+@import '../../../variables';
+
+:host {
+  text-align: center;
+}
+
+h3 {
+  margin-top: $s*3;
+}
+
+.basic-stats {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+table {
+  tr {
+    th {
+      text-align: start;
+    }
+
+    td {
+      text-align: start;
+    }
+  }
+}
+
+.chart-wrapper {
+}
+
+.pie-charts {
+  @include mq(sm) {
+    display: flex;
+
+    > section {
+      width: 50%;
+    }
+  }
+}
+
+section {
+  margin-bottom: 2*$s;
+}

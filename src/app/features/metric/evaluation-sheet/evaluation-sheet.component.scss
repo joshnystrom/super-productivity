@@ -1,0 +1,28 @@
+@import '../../../../variables';
+
+.wrapper {
+  position: relative;
+  padding: $s*2;
+  background: #fff;
+  border-radius: $card-border-radius;
+
+  @include darkTheme {
+    background: $dark-theme-bg-lighter;
+  }
+}
+
+mat-form-field {
+  margin-bottom: $s;
+}
+
+.row {
+  @include mq(xs) {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $s;
+
+    > * {
+      width: 48%;
+    }
+  }
+}

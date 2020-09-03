@@ -1,0 +1,29 @@
+appId: com.super-productivity.app
+files:
+  - electron/**/*
+  - "!electron/**/*.ts"
+  - "!electron/**/*.js.map"
+  - dist/**/*
+  - 'embedded.provisionprofile'
+directories:
+  output: "./app-builds"
+
+mac:
+  appId: com.super-productivity.app
+  type: development
+  category: public.app-category.productivity
+#  entitlements: build/entitlements.mac.plist
+#  entitlementsInherit: build/entitlements.mac.plist
+  icon: build/icon.icns
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  provisioningProfile: embedded.provisionprofile
+#  darkModeSupport: true
+  target:
+    - mas-dev
+
+mas:
+  category: public.app-category.productivity
+  entitlements: build/entitlements.mas.plist
+  entitlementsInherit: build/entitlements.mas.inherit.plist
+  icon: build/icon.icns

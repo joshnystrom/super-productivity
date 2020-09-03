@@ -1,0 +1,67 @@
+@import '../../../../variables';
+
+:host {
+  background: inherit;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  min-height: 48px;
+  //background: inherit;
+}
+
+.snack-icon {
+  margin-right: $s;
+  position: relative;
+  z-index: 2;
+  //background: inherit;
+
+  .success & {
+    color: $success-green;
+  }
+
+  .error & {
+    color: $c-warn;
+  }
+}
+
+.message {
+  flex: 1;
+  // icons all have there inner padding so we also move th message a little bit
+  padding-left: $s;
+  padding-top: $s;
+  padding-bottom: $s;
+}
+
+button {
+  margin: 0;
+  margin-left: 1.5* $s;
+}
+
+.button-wrapper {
+  margin-left: auto;
+
+  button {
+    text-transform: uppercase;
+  }
+}
+
+.close-btn {
+  margin-left: 0;
+  margin-right: -$s;
+  transition: $transition-fast;
+  opacity: 0;
+
+  .wrapper:hover & {
+    opacity: 1;
+  }
+}
+
+mat-progress-bar {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+}

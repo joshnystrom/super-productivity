@@ -1,0 +1,265 @@
+@import '../../../variables';
+
+$summary-point-inner-margin: $s;
+
+:host {
+  ::ng-deep .mat-tab-labels {
+    justify-content: center !important;
+    user-select: none;
+  }
+}
+
+.page-wrapper {
+  //display: flex;
+  //align-items: center;
+  //flex-direction: column;
+  text-align: center;
+}
+
+.tab-inner {
+  padding: 0;
+  margin: auto;
+  max-width: $component-max-width;
+
+  @include mq(xs) {
+    padding: $s;
+  }
+
+  &.full-width {
+    max-width: none;
+  }
+}
+
+
+.back-btn {
+  margin-top: $s*2;
+}
+
+.done-headline {
+  margin-top: $s*4;
+  margin-bottom: $s*3 - $summary-point-inner-margin;
+}
+
+.daily-summary-summary {
+  margin-bottom: $s*2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  p {
+    margin: 5px;
+  }
+}
+
+.summary-point {
+  vertical-align: center;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  margin: $summary-point-inner-margin;
+  //flex-grow: 1;
+  flex-basis: 150px;
+  position: relative;
+}
+
+.summary-text {
+}
+
+.summary-val {
+  font-weight: bold;
+}
+
+.finish-day-opts {
+  margin-top: 10px;
+
+  mat-checkbox {
+    display: block;
+  }
+}
+
+.tabs{
+  margin-left: -2*$s;
+  margin-right: -2*$s;
+
+  @include mq(xs) {
+    margin: 0;
+  }
+}
+
+.daily-summary-actions {
+  margin-top: 30px;
+
+  button {
+    margin: 0 $s/2;
+
+    mat-icon + mat-icon {
+      //margin-left: -$s;
+    }
+  }
+}
+
+.success-animation-wrapper {
+  $this-ani-style: 1s linear infinite;
+  $this-ico-size: 128px;
+  clear: both;
+  display: block;
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden;
+
+  mat-icon {
+    width: $this-ico-size;
+    height: $this-ico-size;
+    display: block;
+    font-size: $this-ico-size;
+    color: $yellow;
+    //transform-origin: center center;
+    animation: success-animation-sun #{$this-ani-style};
+    backface-visibility: hidden;
+  }
+
+  .unicorn-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .unicorn {
+    transform-origin: center center;
+    animation: success-animation-unicorn #{$this-ani-style};
+  }
+}
+
+.tomorrows-note {
+  border-radius: $card-border-radius;
+  display: inline-block;
+  width: 500px;
+  max-width: 100%;
+}
+
+
+@keyframes success-animation-sun {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(5) rotate(0deg);
+  }
+  75% {
+    transform: scale(10) rotate(90deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(12) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes success-animation-unicorn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    transform: scale(2);
+  }
+  75% {
+    transform: scale(3);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+$particles: 30;
+$width: 500;
+$height: 500;
+
+// Create the explosion...
+$box-shadow: ();
+$box-shadow2: ();
+@for $i from 0 through $particles {
+  $box-shadow: $box-shadow,
+  random($width)-$width / 2 + px random($height)-$height / 1.2 + px hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2, 0 0 #fff
+}
+
+.pyro {
+  pointer-events: none;
+
+  > .before,
+  > .after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    //border-radius: 50%;
+    box-shadow: $box-shadow2;
+    animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+    opacity: 0;
+  }
+
+  > .after {
+    animation-delay: 1.25s, 1.25s, 1.25s;
+    animation-duration: 1.25s, 1.25s, 6.25s;
+  }
+}
+
+
+@keyframes bang {
+  to {
+    box-shadow: $box-shadow;
+  }
+}
+
+@keyframes gravity {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1
+  }
+
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+@keyframes position {
+  0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%;
+  }
+  20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%;
+  }
+  40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%
+  }
+  60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%;
+  }
+  80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%;
+  }
+}
+
